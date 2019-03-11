@@ -1,14 +1,14 @@
 {
-  "main.css": "/React_Multipurpose/public/static/css/main.4cc26bf9.chunk.css",
-  "main.js": "/React_Multipurpose/public/static/js/main.2bcba637.chunk.js",
-  "main.js.map": "/React_Multipurpose/public/static/js/main.2bcba637.chunk.js.map",
-  "runtime~main.js": "/React_Multipurpose/public/static/js/runtime~main.74f5e252.js",
-  "runtime~main.js.map": "/React_Multipurpose/public/static/js/runtime~main.74f5e252.js.map",
-  "static/js/2.b0fe684d.chunk.js": "/React_Multipurpose/public/static/js/2.b0fe684d.chunk.js",
-  "static/js/2.b0fe684d.chunk.js.map": "/React_Multipurpose/public/static/js/2.b0fe684d.chunk.js.map",
-  "index.html": "/React_Multipurpose/public/index.html",
-  "precache-manifest.592d65d81f3df012daf4739f8d7d55f3.js": "/React_Multipurpose/public/precache-manifest.592d65d81f3df012daf4739f8d7d55f3.js",
-  "service-worker.js": "/React_Multipurpose/public/service-worker.js",
-  "static/css/main.4cc26bf9.chunk.css.map": "/React_Multipurpose/public/static/css/main.4cc26bf9.chunk.css.map",
-  "static/media/logo.svg": "/React_Multipurpose/public/static/media/logo.5d5d9eef.svg"
+  "main.css": "/React_Multipurpose/static/css/main.4cc26bf9.chunk.css",
+  "main.js": "/React_Multipurpose/static/js/main.2bcba637.chunk.js",
+  "main.js.map": "/React_Multipurpose/static/js/main.2bcba637.chunk.js.map",
+  "runtime~main.js": "/React_Multipurpose/static/js/runtime~main.dc1f0153.js",
+  "runtime~main.js.map": "/React_Multipurpose/static/js/runtime~main.dc1f0153.js.map",
+  "static/js/2.b0fe684d.chunk.js": "/React_Multipurpose/static/js/2.b0fe684d.chunk.js",
+  "static/js/2.b0fe684d.chunk.js.map": "/React_Multipurpose/static/js/2.b0fe684d.chunk.js.map",
+  "index.html": "/React_Multipurpose/index.html",
+  "precache-manifest.b79223e6f3a60ea908ae5b7760e12ba1.js": "/React_Multipurpose/precache-manifest.b79223e6f3a60ea908ae5b7760e12ba1.js",
+  "service-worker.js": "/React_Multipurpose/service-worker.js",
+  "static/css/main.4cc26bf9.chunk.css.map": "/React_Multipurpose/static/css/main.4cc26bf9.chunk.css.map",
+  "static/media/logo.svg": "/React_Multipurpose/static/media/logo.5d5d9eef.svg"
 }
