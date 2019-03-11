@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UniqueId from "react-html-id";
 import { Image, Navbar, Form } from "react-bootstrap";
+import trash from "../images/trash.png";
 
 export default class DragAndDrop extends Component {
   constructor(props) {
@@ -132,7 +133,7 @@ export default class DragAndDrop extends Component {
               height: "50%"
             }}
             draggable={false}
-            src="/trash.png"
+            src={trash}
           />
         </div>
         <div

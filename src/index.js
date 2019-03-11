@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import AppDragDrop from "./Components/AppDragDrop";
 import ApiCalling from "./Components/ApiCalling";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 ReactDOM.render(
   <Router>
