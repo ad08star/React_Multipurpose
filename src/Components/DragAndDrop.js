@@ -129,7 +129,7 @@ export default class DragAndDrop extends Component {
         >
           <Image
             style={{
-              width: "50%",
+              width: "30%",
               height: "50%"
             }}
             draggable={false}
