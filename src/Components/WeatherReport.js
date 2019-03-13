@@ -19,25 +19,28 @@ export default class WeatherReport extends Component {
   };
   fetchWeather = e => {
     e.preventDefault();
-    this.setState({ showLoading: true });
-    console.log("city selected: ", this.state.cityID);
-    axios
-      .get(
-        "http://api.openweathermap.org/data/2.5/weather?id=" +
-          this.state.cityID +
-          "&APPID=11aae5b663fce4efb87b44afa2069e54&units=metric"
-      )
-      .then(response => {
-        this.setState({
-          forecast: response.data,
-          showLoading: false
-        });
-      })
-      .catch(error => console.log(error.response));
+    if (this.state.cityID != 0) {
+      this.setState({ showLoading: true });
+      console.log("city selected: ", this.state.cityID);
+      axios
+        .get(
+          "https://api.openweathermap.org/data/2.5/weather?id=" +
+            this.state.cityID +
+            "&APPID=11aae5b663fce4efb87b44afa2069e54&units=metric"
+        )
+        .then(response => {
+          this.setState({
+            forecast: response.data,
+            showLoading: false
+          });
+        })
+        .catch(error => console.log(error.response));
+    }
   };
 
   render() {
     var cities = [
+      { name: "select", id: 0 },
       { name: "Delhi", id: 1273294 },
       { name: "Mumbai", id: 1275339 },
       { name: "Kolkata", id: 1275004 },
