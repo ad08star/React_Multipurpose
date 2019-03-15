@@ -1,13 +1,14 @@
 {
-  "main.css": "/React_Multipurpose/static/css/main.4cc26bf9.chunk.css",
-  "main.js": "/React_Multipurpose/static/js/main.c9bcf4a2.chunk.js",
-  "main.js.map": "/React_Multipurpose/static/js/main.c9bcf4a2.chunk.js.map",
+  "main.css": "/React_Multipurpose/static/css/main.919358ff.chunk.css",
+  "main.js": "/React_Multipurpose/static/js/main.284f3363.chunk.js",
+  "main.js.map": "/React_Multipurpose/static/js/main.284f3363.chunk.js.map",
   "runtime~main.js": "/React_Multipurpose/static/js/runtime~main.dc1f0153.js",
   "runtime~main.js.map": "/React_Multipurpose/static/js/runtime~main.dc1f0153.js.map",
-  "static/js/2.84910a09.chunk.js": "/React_Multipurpose/static/js/2.84910a09.chunk.js",
-  "static/js/2.84910a09.chunk.js.map": "/React_Multipurpose/static/js/2.84910a09.chunk.js.map",
+  "static/js/2.3478efd3.chunk.js": "/React_Multipurpose/static/js/2.3478efd3.chunk.js",
+  "static/js/2.3478efd3.chunk.js.map": "/React_Multipurpose/static/js/2.3478efd3.chunk.js.map",
   "index.html": "/React_Multipurpose/index.html",
-  "precache-manifest.593825caeab6fa4613b2ebab9eb80356.js": "/React_Multipurpose/precache-manifest.593825caeab6fa4613b2ebab9eb80356.js",
+  "precache-manifest.a76cc65fe28fedbd2a183c26ae908782.js": "/React_Multipurpose/precache-manifest.a76cc65fe28fedbd2a183c26ae908782.js",
   "service-worker.js": "/React_Multipurpose/service-worker.js",
-  "static/css/main.4cc26bf9.chunk.css.map": "/React_Multipurpose/static/css/main.4cc26bf9.chunk.css.map"
+  "static/css/main.919358ff.chunk.css.map": "/React_Multipurpose/static/css/main.919358ff.chunk.css.map",
+  "static/media/logo.png": "/React_Multipurpose/static/media/logo.453f01e2.png"
 }
