@@ -1,0 +1,51 @@
+#AddListTask {
+  width: 600px;
+  margin: auto;
+}
+
+#ipRound {
+  border-radius: 25px;
+  border: 2px solid #c1666b;
+  padding: 15px;
+  width: 350px;
+  height: 10px;
+}
+
+#taskAddBtn {
+  background-color: #c1666b;
+  color: white;
+  border-radius: 25px;
+  border: 2px solid #c1666b;
+  width: 75px;
+  height: 33px;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.taskBoxHeading {
+  text-align: center;
+  background: #c1666b;
+  border-radius: 20px;
+  margin-top: 5px;
+  color: white;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1.2vw;
+}
+
+.taskPanding {
+  background-color: #dcd3c5;
+  border-radius: 20px;
+  padding: 2px 2px 2px 5px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.taskComplete {
+  background-color: skyblue;
+  border-radius: 20px;
+  padding: 2px 2px 2px 5px;
+  margin-top: 5px;
+  font-weight: 600;
+}

@@ -19,7 +19,7 @@ export default class WeatherReport extends Component {
   };
   fetchWeather = e => {
     e.preventDefault();
-    if (this.state.cityID != 0) {
+    if (this.state.cityID !== 0) {
       this.setState({ showLoading: true });
       console.log("city selected: ", this.state.cityID);
       axios

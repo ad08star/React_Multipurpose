@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import UniqueId from "react-html-id";
-import { Image, Navbar, Form } from "react-bootstrap";
+import { Image, Form } from "react-bootstrap";
 import trash from "../images/trash.png";
+import HeaderNavbar from "./HeaderNavbar";
+import "./DragAndDrop.css";
 
 export default class DragAndDrop extends Component {
   constructor(props) {
@@ -76,44 +78,66 @@ export default class DragAndDrop extends Component {
           onDragStart={e => this.onDragStart(e, t.name)}
           draggable
           key={this.nextUniqueId()}
-          style={
-            t.category === "WIP"
-              ? { backgroundColor: "yellow", marginTop: "5px" }
-              : { backgroundColor: "skyblue", marginTop: "5px" }
-          }
+          className={t.category === "WIP" ? "taskPanding" : "taskComplete"}
         >
+          <span
+            className={
+              t.category === "WIP"
+                ? "far fa-times-circle"
+                : "far fa-check-circle"
+            }
+            style={
+              t.category === "WIP"
+                ? { paddingRight: "5px", color: "red" }
+                : { paddingRight: "5px", color: "green" }
+            }
+          />
           {t.name}
         </div>
       );
     });
 
     return (
-      <div>
-        <Navbar style={{ backgroundColor: "Black" }}>
-          <Navbar.Brand href="#home" style={{ color: "white" }}>
+      <div style={{ backgroundColor: "#e4dfda" }}>
+        <HeaderNavbar />
+        <nav className="navbar" style={{ marginBottom: "0px" }}>
+          <div id="AddListTask">
             <Form inline style={{ float: "left" }}>
-              <span>TO DO LIST: &nbsp; &nbsp;</span>
+              <span style={{ color: "#c1666b", fontWeight: "700" }}>
+                TO DO LIST: &nbsp;
+              </span>
               <span>
                 <input
+                  autoFocus
+                  id="ipRound"
                   type="text"
                   placeholder="Enter task"
                   onChange={this.handleChange}
                 />
-                <button type="submit" onClick={e => this.addTask(e)}>
+                <button
+                  id="taskAddBtn"
+                  type="submit"
+                  onClick={e => this.addTask(e)}
+                >
                   Add
                 </button>
               </span>
             </Form>
-          </Navbar.Brand>
-        </Navbar>
+          </div>
+        </nav>
 
         <div
           className="col-lg-4 col-md-4 col-sm-4 col-xs-4"
-          style={{ backgroundColor: "green", height: "300px" }}
+          style={{
+            backgroundColor: "#d4b483",
+            height: "500px",
+            border: "3px solid #c1666b",
+            borderRadius: "20px"
+          }}
           onDrop={e => this.onDrop(e, "WIP")}
           onDragOver={e => this.onDragOver(e)}
         >
-          <div>Panding/WIP Tasks</div>
+          <div className="taskBoxHeading">Panding/WIP Tasks</div>
           {tasks.WIP}
         </div>
         <div
@@ -121,16 +145,17 @@ export default class DragAndDrop extends Component {
           onDragOver={e => this.onDragOver(e)}
           onDrop={e => this.onDrop(e, "FINISH")}
           style={{
-            height: "300px",
+            height: "500px",
             display: "flex",
             alignItems: "flex-end",
-            justifyContent: "center"
+            justifyContent: "center",
+            backgroundColor: "#e4dfda"
           }}
         >
           <Image
             style={{
               width: "30%",
-              height: "50%"
+              height: "30%"
             }}
             draggable={false}
             src={trash}
@@ -140,11 +165,26 @@ export default class DragAndDrop extends Component {
           className="col-lg-4 col-md-4 col-sm-4 col-xs-4"
           onDragOver={e => this.onDragOver(e)}
           onDrop={e => this.onDrop(e, "COMPLETE")}
-          style={{ backgroundColor: "gray", height: "300px" }}
+          style={{
+            backgroundColor: "#48a9a6",
+            height: "500px",
+            border: "3px solid #c1666b",
+            borderRadius: "20px"
+          }}
         >
-          <div>Completed Tasks</div>
+          <div className="taskBoxHeading">Completed Tasks</div>
           {tasks.COMPLETE}
         </div>
+        <div
+          style={{
+            position: "fixed",
+            display: "block",
+            height: "100%",
+            width: "100%",
+            backgroundColor: "#e4dfda",
+            zIndex: "-1"
+          }}
+        />
       </div>
     );
   }
