@@ -20,18 +20,20 @@ export default class DragAndDrop extends Component {
     this.state.name = e.target.value;
   };
   addTask = e => {
-    e.preventDefault();
-    console.log("Name: ", this.state.name);
-    let localObj = {
-      name: this.state.name,
-      category: "WIP",
-      id: this.nextUniqueId()
-    };
-    this.state.tasks.push(localObj);
-    this.setState({
-      task: this.state.tasks
-    });
-    console.log(this.state.tasks);
+    if (this.state.name != "") {
+      e.preventDefault();
+      console.log("Name: ", this.state.name);
+      let localObj = {
+        name: this.state.name,
+        category: "WIP",
+        id: this.nextUniqueId()
+      };
+      this.state.tasks.push(localObj);
+      this.setState({
+        task: this.state.tasks
+      });
+      console.log(this.state.tasks);
+    }
   };
 
   onDragOver = ev => {
