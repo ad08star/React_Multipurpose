@@ -65,3 +65,28 @@
   outline: none;
   text-align-last: center;
 }
+
+.weatherTable {
+  border: 3px solid #c1666b;
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 50%;
+}
+.weatherTd1 {
+  border: 2px solid #c1666b;
+  padding: 5px;
+  font-weight: 600;
+  color: #c1666b;
+}
+.weatherTd2 {
+  border: 2px solid #c1666b;
+  padding: 5px;
+  font-weight: 600;
+}
+#weatherCity {
+  font-size: 5vw;
+  color: #c1666b;
+}
+#CityTemp {
+  font-size: 7vw;
+}

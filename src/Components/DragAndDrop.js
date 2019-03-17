@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import UniqueId from "react-html-id";
 import { Image, Form } from "react-bootstrap";
 import trash from "../images/trash.png";
-import logo from "../images/logo.png";
 import HeaderNavbar from "./HeaderNavbar";
 import "./DragAndDrop.css";
 

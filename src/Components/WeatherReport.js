@@ -14,22 +14,32 @@ export default class WeatherReport extends Component {
       currentTemp: "",
       wind: "",
       humidity: "",
-      Pressure: "",
+      pressure: "",
       cloudiness: "",
       sunRise: "",
       sunSet: "",
       maxTemp: "",
       minTemp: "",
+      weatherType: "",
       iconUrl: "https://openweathermap.org/img/w/",
       forecast: null,
       showLoading: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.fetchWeather = this.fetchWeather.bind(this);
+    this.Unix_timestamp = this.Unix_timestamp.bind(this);
   }
 
   handleChange = e => {
     this.setState({ cityID: e.target.value });
+  };
+
+  Unix_timestamp = t => {
+    var dt = new Date(t * 1000);
+    var hr = dt.getHours();
+    var m = "0" + dt.getMinutes();
+    console.log(hr + ":" + m.substr(-2));
+    return hr + ":" + m.substr(-2);
   };
   fetchWeather = e => {
     e.preventDefault();
@@ -46,18 +56,22 @@ export default class WeatherReport extends Component {
           this.setState({
             forecast: response.data,
             showLoading: false,
-            cityName: "",
+            cityName: response.data.name,
             cityID: 0,
             currentTemp: response.data.main.temp,
-            wind: "",
+            wind: response.data.wind.speed + " m/s",
             humidity: response.data.main.humidity + "%",
-            Pressure: response.data.main.pressure + " hpa",
-            cloudiness: "",
-            sunRise: "",
-            sunSet: "",
+            pressure: response.data.main.pressure + " hpa",
+            cloudiness: response.data.clouds.all + "%",
+            sunRise: response.data.sys.sunrise,
+            sunSet: response.data.sys.sunset,
             maxTemp: response.data.main.temp_max,
             minTemp: response.data.main.temp_min,
-            iconUrl: "https://openweathermap.org/img/w/"
+            iconUrl:
+              "https://openweathermap.org/img/w/" +
+              response.data.weather[0].icon +
+              ".png",
+            weatherType: response.data.weather[0].main
           });
         })
         .catch(error => console.log(error.response));
@@ -65,6 +79,8 @@ export default class WeatherReport extends Component {
   };
 
   render() {
+    var sunRiseTime = this.Unix_timestamp(this.state.sunRise);
+    var sunSetTime = this.Unix_timestamp(this.state.sunSet);
     var cities = [
       { name: "select", id: 0 },
       { name: "Delhi", id: 1273294 },
@@ -118,15 +134,77 @@ export default class WeatherReport extends Component {
             </Form>
           </div>
         </nav>
-        <Spinner
-          size={120}
-          spinnerColor={"#333"}
-          spinnerWidth={1}
-          visible={this.state.showLoading}
-        />
-        {this.state.currentTemp} &#8451;,{this.state.Pressure},
-        {this.state.humidity},{this.state.minTemp} &#8451;,{this.state.maxTemp}{" "}
-        &#x2103;
+        <div style={{ paddingLeft: "45%" }}>
+          <Spinner
+            size={120}
+            spinnerColor={"#333"}
+            spinnerWidth={1}
+            visible={this.state.showLoading}
+          />
+        </div>
+        <br />
+        <br />
+
+        <div
+          className="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+          style={
+            this.state.cityName == ""
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
+          <table className="weatherTable">
+            <tbody>
+              <tr>
+                <td className="weatherTd1">Wind</td>
+                <td className="weatherTd2">{this.state.wind}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">Humidity</td>
+                <td className="weatherTd2">{this.state.humidity}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">Pressure</td>
+                <td className="weatherTd2">{this.state.pressure}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">Cloudiness</td>
+                <td className="weatherTd2">{this.state.cloudiness}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">SunRise (HH:MM)</td>
+                <td className="weatherTd2">{sunRiseTime}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">SunSet (HH:MM)</td>
+                <td className="weatherTd2">{sunSetTime}</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">Max Temp</td>
+                <td className="weatherTd2">{this.state.maxTemp}&#x2103;</td>
+              </tr>
+              <tr>
+                <td className="weatherTd1">Min Temp</td>
+                <td className="weatherTd2">{this.state.minTemp}&#x2103;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          className="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+          style={
+            this.state.cityName == ""
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
+          <p id="weatherCity">{this.state.cityName},IN</p>
+          <p id="CityTemp">{this.state.currentTemp}&#x2103;</p>
+          <p style={{ fontSize: "2vw" }}>
+            <img src={this.state.iconUrl} />
+            &nbsp;{this.state.weatherType}
+          </p>
+        </div>
         <div
           style={{
             position: "fixed",
