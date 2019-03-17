@@ -101,7 +101,7 @@ export default class DragAndDrop extends Component {
 
     return (
       <div style={{ backgroundColor: "#e4dfda" }}>
-        <HeaderNavbar />
+        <HeaderNavbar pagetitle={"DRAG AND DROP: TO DO LIST"} />
         <nav className="navbar" style={{ marginBottom: "0px" }}>
           <div id="AddListTask">
             <Form inline style={{ float: "left" }}>
@@ -139,7 +139,7 @@ export default class DragAndDrop extends Component {
           onDrop={e => this.onDrop(e, "WIP")}
           onDragOver={e => this.onDragOver(e)}
         >
-          <div className="taskBoxHeading">Panding/WIP Tasks</div>
+          <div className="taskBoxHeading">Pending/WIP Tasks</div>
           {tasks.WIP}
         </div>
         <div

@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HeaderNavbar />
+        <HeaderNavbar pagetitle={"React Multipurpose App"} />
         <Router>
           <div>
             <div className="contentBlock">

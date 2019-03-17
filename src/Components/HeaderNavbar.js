@@ -5,6 +5,9 @@ import { Image } from "react-bootstrap";
 import logo from "../images/logo.png";
 
 export default class HeaderNavbar extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div>
@@ -24,7 +27,7 @@ export default class HeaderNavbar extends Component {
               className="navbar-brand"
               style={{ color: "#e4dfda", fontWeight: "bold" }}
             >
-              React Multipurpose App
+              {this.props.pagetitle}
             </a>
             <Link to="/" className="nav navbar-nav navbar-right">
               <span

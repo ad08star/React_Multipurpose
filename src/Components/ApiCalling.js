@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, ProgressBar } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 import axios from "axios";
 import HeaderNavbar from "./HeaderNavbar";
 import "./DragAndDrop.css";
@@ -55,22 +55,72 @@ export default class ApiCalling extends Component {
 
   render() {
     return (
-      <div>
-        <HeaderNavbar />
-        <div>
-          <ProgressBar
-            striped
-            variant="success"
-            now={this.state.progress_val}
-            label={this.state.progress_val}
-          />
+      <div style={{ backgroundColor: "#e4dfda" }}>
+        <HeaderNavbar pagetitle={"GET TO KNOW THE CREATOR"} />
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3" />
+        <div
+          className="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+          style={{
+            border: "5px double #c1666b",
+            borderRadius: "15px",
+            padding: "20px",
+            fontWeight: 700,
+            fontSize: "medium",
+            color: "#4a4747"
+          }}
+        >
+          <div
+            style={
+              this.state.progress_val == 100
+                ? { display: "none" }
+                : { display: "block" }
+            }
+          >
+            <ProgressBar
+              striped
+              variant="success"
+              now={this.state.progress_val}
+              label={this.state.progress_val}
+            />
+          </div>
+          <div>
+            <a style={{ color: "#c1666b" }}>Firstname : </a>
+            {this.state.firstname}
+          </div>
+          <div>
+            <a style={{ color: "#c1666b" }}>Lastname : </a>
+            {this.state.lastname}
+          </div>
+          <hr />
+          <div>
+            <a style={{ color: "#c1666b" }}>Company : </a>
+            {this.state.company}
+          </div>
+          <div>
+            <a style={{ color: "#c1666b" }}>Designation : </a>
+            {this.state.designation}
+          </div>
+          <hr />
+          <div>
+            <a style={{ color: "#c1666b" }}>Occupation : </a>
+            {this.state.occupation}
+          </div>
+          <div style={{ paddingTop: "5px" }}>
+            <a style={{ color: "#c1666b" }}>Component_use : </a>
+            {this.state.component_use}
+          </div>
         </div>
-        <div>Firstname : {this.state.firstname}</div>
-        <div>Lastname : {this.state.lastname}</div>
-        <div>Company : {this.state.company}</div>
-        <div>Designation : {this.state.designation}</div>
-        <div>Occupation : {this.state.occupation}</div>
-        <div>Component_use : {this.state.component_use}</div>
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3" />
+        <div
+          style={{
+            position: "fixed",
+            display: "block",
+            height: "100%",
+            width: "100%",
+            backgroundColor: "#e4dfda",
+            zIndex: "-1"
+          }}
+        />
       </div>
     );
   }
