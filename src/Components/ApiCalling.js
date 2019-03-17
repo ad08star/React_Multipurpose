@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Navbar, ProgressBar } from "react-bootstrap";
 import axios from "axios";
+import HeaderNavbar from "./HeaderNavbar";
+import "./DragAndDrop.css";
 
 export default class ApiCalling extends Component {
   state = {
@@ -54,11 +56,7 @@ export default class ApiCalling extends Component {
   render() {
     return (
       <div>
-        <Navbar style={{ backgroundColor: "Black" }}>
-          <Navbar.Brand href="#home" style={{ color: "white" }}>
-            <span>CHAINING MULTIPLE API CALLS (Axios)</span>
-          </Navbar.Brand>
-        </Navbar>
+        <HeaderNavbar />
         <div>
           <ProgressBar
             striped
