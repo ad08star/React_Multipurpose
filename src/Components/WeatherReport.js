@@ -150,11 +150,16 @@ export default class WeatherReport extends Component {
           style={
             this.state.cityName == ""
               ? { display: "none" }
-              : { display: "block" }
+              : { display: "block", paddingTop: "1vw" }
           }
         >
           <table className="weatherTable">
             <tbody>
+              <tr>
+                <th colSpan="2" style={{ textAlign: "center" }}>
+                  Details
+                </th>
+              </tr>
               <tr>
                 <td className="weatherTd1">Wind</td>
                 <td className="weatherTd2">{this.state.wind}</td>
@@ -200,7 +205,7 @@ export default class WeatherReport extends Component {
         >
           <p id="weatherCity">{this.state.cityName},IN</p>
           <p id="CityTemp">{this.state.currentTemp}&#x2103;</p>
-          <p style={{ fontSize: "2vw" }}>
+          <p style={{ fontSize: "2vw", fontWeight: "600" }}>
             <img src={this.state.iconUrl} />
             &nbsp;{this.state.weatherType}
           </p>
