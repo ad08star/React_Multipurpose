@@ -1,37 +1,18 @@
 import React, { Component } from "react";
 import Spinner from "react-spinner-material";
-import axios from "axios";
+
 import { Form } from "react-bootstrap";
 import HeaderNavbar from "./HeaderNavbar";
 import "./DragAndDrop.css";
+import { connect } from "react-redux";
+import * as actionCreator from "./Actions/action";
 
-export default class WeatherReport extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cityName: "",
-      cityID: 0,
-      currentTemp: "",
-      wind: "",
-      humidity: "",
-      pressure: "",
-      cloudiness: "",
-      sunRise: "",
-      sunSet: "",
-      maxTemp: "",
-      minTemp: "",
-      weatherType: "",
-      iconUrl: "https://openweathermap.org/img/w/",
-      forecast: null,
-      showLoading: false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.fetchWeather = this.fetchWeather.bind(this);
-    this.Unix_timestamp = this.Unix_timestamp.bind(this);
-  }
-
-  handleChange = e => {
-    this.setState({ cityID: e.target.value });
+var cityID;
+class WeatherReport extends Component {
+  handleChange = event => {
+    event.preventDefault();
+    cityID = event.target.value;
+    console.log("city_id: ", cityID);
   };
 
   Unix_timestamp = t => {
@@ -41,46 +22,10 @@ export default class WeatherReport extends Component {
     console.log(hr + ":" + m.substr(-2));
     return hr + ":" + m.substr(-2);
   };
-  fetchWeather = e => {
-    e.preventDefault();
-    if (this.state.cityID != 0) {
-      this.setState({ showLoading: true });
-      console.log("city selected: ", this.state.cityID);
-      axios
-        .get(
-          "https://api.openweathermap.org/data/2.5/weather?id=" +
-            this.state.cityID +
-            "&APPID=11aae5b663fce4efb87b44afa2069e54&units=metric"
-        )
-        .then(response => {
-          this.setState({
-            forecast: response.data,
-            showLoading: false,
-            cityName: response.data.name,
-            cityID: 0,
-            currentTemp: response.data.main.temp,
-            wind: response.data.wind.speed + " m/s",
-            humidity: response.data.main.humidity + "%",
-            pressure: response.data.main.pressure + " hpa",
-            cloudiness: response.data.clouds.all + "%",
-            sunRise: response.data.sys.sunrise,
-            sunSet: response.data.sys.sunset,
-            maxTemp: response.data.main.temp_max,
-            minTemp: response.data.main.temp_min,
-            iconUrl:
-              "https://openweathermap.org/img/w/" +
-              response.data.weather[0].icon +
-              ".png",
-            weatherType: response.data.weather[0].main
-          });
-        })
-        .catch(error => console.log(error.response));
-    }
-  };
 
   render() {
-    var sunRiseTime = this.Unix_timestamp(this.state.sunRise);
-    var sunSetTime = this.Unix_timestamp(this.state.sunSet);
+    var sunRiseTime = this.Unix_timestamp(this.props.sunRise);
+    var sunSetTime = this.Unix_timestamp(this.props.sunSet);
     var cities = [
       { name: "select", id: 0 },
       { name: "Delhi", id: 1273294 },
@@ -128,7 +73,7 @@ export default class WeatherReport extends Component {
                 <input
                   id="taskAddBtn"
                   type="submit"
-                  onClick={e => this.fetchWeather(e)}
+                  onClick={this.props.fetchWeather}
                 />
               </span>
             </Form>
@@ -139,7 +84,7 @@ export default class WeatherReport extends Component {
             size={120}
             spinnerColor={"#333"}
             spinnerWidth={1}
-            visible={this.state.showLoading}
+            visible={this.props.showLoading}
           />
         </div>
         <br />
@@ -148,7 +93,7 @@ export default class WeatherReport extends Component {
         <div
           className="col-lg-6 col-md-6 col-sm-6 col-xs-6"
           style={
-            this.state.cityName == ""
+            this.props.cityName == ""
               ? { display: "none" }
               : { display: "block", paddingTop: "1vw" }
           }
@@ -162,19 +107,19 @@ export default class WeatherReport extends Component {
               </tr>
               <tr>
                 <td className="weatherTd1">Wind</td>
-                <td className="weatherTd2">{this.state.wind}</td>
+                <td className="weatherTd2">{this.props.wind}</td>
               </tr>
               <tr>
                 <td className="weatherTd1">Humidity</td>
-                <td className="weatherTd2">{this.state.humidity}</td>
+                <td className="weatherTd2">{this.props.humidity}</td>
               </tr>
               <tr>
                 <td className="weatherTd1">Pressure</td>
-                <td className="weatherTd2">{this.state.pressure}</td>
+                <td className="weatherTd2">{this.props.pressure}</td>
               </tr>
               <tr>
                 <td className="weatherTd1">Cloudiness</td>
-                <td className="weatherTd2">{this.state.cloudiness}</td>
+                <td className="weatherTd2">{this.props.cloudiness}</td>
               </tr>
               <tr>
                 <td className="weatherTd1">SunRise (HH:MM)</td>
@@ -186,11 +131,11 @@ export default class WeatherReport extends Component {
               </tr>
               <tr>
                 <td className="weatherTd1">Max Temp</td>
-                <td className="weatherTd2">{this.state.maxTemp}&#x2103;</td>
+                <td className="weatherTd2">{this.props.maxTemp}&#x2103;</td>
               </tr>
               <tr>
                 <td className="weatherTd1">Min Temp</td>
-                <td className="weatherTd2">{this.state.minTemp}&#x2103;</td>
+                <td className="weatherTd2">{this.props.minTemp}&#x2103;</td>
               </tr>
             </tbody>
           </table>
@@ -198,16 +143,16 @@ export default class WeatherReport extends Component {
         <div
           className="col-lg-6 col-md-6 col-sm-6 col-xs-6"
           style={
-            this.state.cityName == ""
+            this.props.cityName == ""
               ? { display: "none" }
               : { display: "block" }
           }
         >
-          <p id="weatherCity">{this.state.cityName},IN</p>
-          <p id="CityTemp">{this.state.currentTemp}&#x2103;</p>
+          <p id="weatherCity">{this.props.cityName},IN</p>
+          <p id="CityTemp">{this.props.currentTemp}&#x2103;</p>
           <p style={{ fontSize: "2vw", fontWeight: "600" }}>
-            <img src={this.state.iconUrl} />
-            &nbsp;{this.state.weatherType}
+            <img src={this.props.iconUrl} />
+            &nbsp;{this.props.weatherType}
           </p>
         </div>
         <div
@@ -224,3 +169,39 @@ export default class WeatherReport extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    forecast: state.forecast,
+    cityName: state.cityName,
+    cityID: state.cityID,
+    currentTemp: state.currentTemp,
+    wind: state.wind,
+    humidity: state.humidity,
+    pressure: state.pressure,
+    cloudiness: state.cloudiness,
+    sunRise: state.sunRise,
+    sunSet: state.sunSet,
+    maxTemp: state.maxTemp,
+    minTemp: state.minTemp,
+    weatherType: state.weatherType,
+    iconUrl: state.iconUrl,
+    forecast: state.forecast,
+    showLoading: state.showLoading
+  };
+};
+
+const mapDispachToProps = dispatch => {
+  console.log("Ciy id", cityID);
+  return {
+    fetchWeather: event => {
+      event.preventDefault();
+      return dispatch(actionCreator.fetchWeather(cityID));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispachToProps
+)(WeatherReport);

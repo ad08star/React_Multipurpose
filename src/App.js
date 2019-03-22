@@ -43,16 +43,8 @@ class App extends Component {
               </p>
               <p>
                 Checkout the weather report. (Powered by:{" "}
-                <em>OpenWeatherMap.org</em>){" "}
-                <a
-                  href="https://openweathermap.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fas fa-external-link-alt" />
-                </a>
+                <em>OpenWeatherMap.org</em>)
               </p>
-
               <Link to="/weather">
                 <button
                   type="button"
