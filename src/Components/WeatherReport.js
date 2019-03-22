@@ -54,7 +54,7 @@ class WeatherReport extends Component {
     });
     return (
       <div style={{ backgroundColor: "#e4dfda" }}>
-        <HeaderNavbar pagetitle={"CURRENT WEATHER REPORT"} />
+        <HeaderNavbar pagetitle={"WEATHER REPORT (REDUX THUNK)"} />
         <nav className="navbar" style={{ marginBottom: "0px" }}>
           <div id="WeatherSelector">
             <Form inline style={{ float: "left" }}>

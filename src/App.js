@@ -42,8 +42,8 @@ class App extends Component {
                 GOT NO WINDOWS AROUND? DONT WORRY... WE HAVE GOT YOU COVERED!
               </p>
               <p>
-                Checkout the weather report. (Powered by:{" "}
-                <em>OpenWeatherMap.org</em>)
+                Checkout the weather report. Using REDUX THUNK for api calling.
+                (Powered by: <em>OpenWeatherMap.org</em>)
               </p>
               <Link to="/weather">
                 <button
