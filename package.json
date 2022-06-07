@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://ad08star.github.io/React_Multipurpose/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.2",
     "billboard.js": "^1.7.1",
     "gh-pages": "^2.0.1",
     "rc-progress": "^2.3.0",
